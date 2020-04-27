@@ -5,5 +5,21 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => MaterialApp(home: RandomWords());
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: _theme,
+      darkTheme: _darkTheme,
+      home: RandomWords(),
+    );
+  }
 }
+
+final _theme = ThemeData(
+  brightness: Brightness.light,
+  primaryColor: Colors.white,
+);
+
+final _darkTheme = ThemeData(
+  brightness: Brightness.dark,
+  primaryColor: Colors.black,
+);
