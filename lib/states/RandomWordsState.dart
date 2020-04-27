@@ -21,14 +21,7 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   void _pushSaved() {
-    final Iterable<ListTile> tiles = _saved.map((WordPair pair) =>
-        ListTile(title: Text(pair.asPascalCase, style: _biggerFont)));
-
-    final List<Widget> divided =
-        ListTile.divideTiles(context: context, tiles: tiles).toList();
-
-    final savedSuggestionsRoute = SavedSuggestionsRoute(divided).build();
-
+    final savedSuggestionsRoute = SavedSuggestionsRoute(context, _saved).build();
     Navigator.of(context).push(savedSuggestionsRoute);
   }
 
