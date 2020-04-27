@@ -6,7 +6,6 @@ import 'package:startupnamer/widgets/RandomWords.dart';
 
 class RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18.0);
   final _saved = Set<WordPair>();
 
   @override
@@ -21,7 +20,8 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   void _pushSaved() {
-    final savedSuggestionsRoute = SavedSuggestionsRoute(context, _saved).build();
+    final savedSuggestionsRoute =
+        SavedSuggestionsRoute(context, _saved).build();
     Navigator.of(context).push(savedSuggestionsRoute);
   }
 
@@ -41,6 +41,7 @@ class RandomWordsState extends State<RandomWords> {
 
   Widget _buildRow(WordPair pair) {
     final bool alreadySaved = _saved.contains(pair); // Add this line.
+    final _biggerFont = const TextStyle(fontSize: 18.0);
 
     return ListTile(
       title: Text(
