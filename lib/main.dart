@@ -5,8 +5,5 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        home: RandomWords(),
-      );
-
+  Widget build(BuildContext context) => MaterialApp(home: RandomWords());
 }

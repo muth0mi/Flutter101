@@ -1,6 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:startupnamer/routes/SavedSuggestionsRoute.dart';
 import 'package:startupnamer/widgets/RandomWords.dart';
 
 class RandomWordsState extends State<RandomWords> {
@@ -10,22 +11,25 @@ class RandomWordsState extends State<RandomWords> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _appbar(),
-      body: _buildSuggestions(),
-    );
+    return Scaffold(appBar: _appbar(), body: _buildSuggestions());
   }
 
   AppBar _appbar() {
-    return AppBar(
-      title: Text('Startup Name Generator'),
-      actions: <Widget>[
-        IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
-      ],
-    );
+    return AppBar(title: Text('Startup Name Generator'), actions: <Widget>[
+      IconButton(icon: Icon(Icons.list), onPressed: _pushSaved)
+    ]);
   }
 
   void _pushSaved() {
+    final Iterable<ListTile> tiles = _saved.map((WordPair pair) =>
+        ListTile(title: Text(pair.asPascalCase, style: _biggerFont)));
+
+    final List<Widget> divided =
+    ListTile.divideTiles(context: context, tiles: tiles).toList();
+
+    final savedSuggestionsRoute = SavedSuggestionsRoute(divided).page;
+
+    Navigator.of(context).push(savedSuggestionsRoute);
   }
 
   Widget _buildSuggestions() {
