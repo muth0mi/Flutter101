@@ -25,9 +25,9 @@ class RandomWordsState extends State<RandomWords> {
         ListTile(title: Text(pair.asPascalCase, style: _biggerFont)));
 
     final List<Widget> divided =
-    ListTile.divideTiles(context: context, tiles: tiles).toList();
+        ListTile.divideTiles(context: context, tiles: tiles).toList();
 
-    final savedSuggestionsRoute = SavedSuggestionsRoute(divided).page;
+    final savedSuggestionsRoute = SavedSuggestionsRoute(divided).build();
 
     Navigator.of(context).push(savedSuggestionsRoute);
   }
